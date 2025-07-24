@@ -1,0 +1,2 @@
+# CircuitCamel
+Hi there, I'm CircuitCamel, a second year CyberSecurity student. I have an interest in self-hosting, digital minimalism and programming. This site is a mix of my resume, projects and maybe a blog.

@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"circuitcamel.com/internal/server"
+	"circuitcamel.com/internal/utils"
+)
 
 func main() {
-	fmt.Println("Hello World!")
+	conf := utils.LoadConfig()
+	server.StartServer(conf)
 }
