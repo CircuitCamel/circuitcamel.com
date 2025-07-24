@@ -6,3 +6,7 @@ type Config struct {
 	KEY  string
 	PORT string
 }
+
+type Page struct {
+	Body string
+}

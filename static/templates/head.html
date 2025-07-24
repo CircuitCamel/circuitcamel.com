@@ -14,10 +14,12 @@
 	<title>{{block "title" .}}CircuitCamel{{end}}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/static/styles/main.css">
-	<link rel="icon" type="image/x-icon" href="/static/images/tab_icons/d20_tab.ico">
+	<link rel="icon" type="image/x-icon" href="/static/images/tab_icons/camel-head.ico">
 </head>
 <body>
-	{{.Body}}
+	<div class="main-content">
+		{{.Body}}
+	</div>
 	{{template "footer" .}}
 </body>
 </html>
