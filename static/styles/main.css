@@ -38,6 +38,36 @@ body {
 
 /*Colors and Fonts*/
 
+h1::before {
+    content: "# ";
+    color: #999;
+}
+
+h2::before {
+    content: "## ";
+    color: #999;
+}
+
+h3::before {
+    content: "### ";
+    color: #999;
+}
+
+h4::before {
+    content: "#### ";
+    color: #999;
+}
+
+h5::before {
+    content: "##### ";
+    color: #999;
+}
+
+h6::before {
+    content: "###### ";
+    color: #999;
+}
+
 body {
     background-color: #121212;
     color: #e0e0e0;

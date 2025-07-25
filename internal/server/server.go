@@ -7,6 +7,7 @@ import (
 
 	"circuitcamel.com/internal/models"
 	"circuitcamel.com/internal/site/index"
+	"circuitcamel.com/internal/site/now"
 	"circuitcamel.com/internal/utils"
 	"github.com/gorilla/mux"
 )
@@ -15,6 +16,8 @@ func StartServer(conf models.Config) {
 	server := mux.NewRouter()
 
 	server.HandleFunc("/", index.Index)
+	server.HandleFunc("/now", now.Now)
+
 	server.HandleFunc("/content", slashEnd)
 	server.HandleFunc("/static", slashEnd)
 
