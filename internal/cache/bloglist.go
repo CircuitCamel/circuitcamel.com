@@ -4,7 +4,9 @@ import (
 	"bufio"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
+	"time"
 
 	"circuitcamel.com/internal/models"
 	"circuitcamel.com/internal/utils"
@@ -22,6 +24,13 @@ func getBlogPosts() ([]models.BlogPost, error) {
 		result[i] = models.BlogPost{Body: result[i].Body, Slug: slug,
 			Date: result[i].Date, Title: result[i].Title}
 	}
+
+	sort.Slice(result, func(i, j int) bool {
+		ti, _ := time.Parse("02-01-2006", result[i].Date)
+		tj, _ := time.Parse("02-01-2006", result[j].Date)
+		return tj.Before(ti)
+	})
+
 	return result, nil
 }
 
@@ -58,7 +67,8 @@ func loadBlogMarkdown(path string) (models.BlogPost, error) {
 				val := strings.TrimSpace(parts[1])
 				switch key {
 				case "date":
-					b.Date = val
+					t, _ := time.Parse("02-01-2006", val)
+					b.Date = t.Format("02-01-2006")
 				case "title":
 					b.Title = val
 				}
