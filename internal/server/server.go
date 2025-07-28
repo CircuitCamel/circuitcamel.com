@@ -5,18 +5,26 @@ import (
 	"log"
 	"net/http"
 
+	"circuitcamel.com/internal/cache"
 	"circuitcamel.com/internal/models"
+	"circuitcamel.com/internal/site/blog"
 	"circuitcamel.com/internal/site/index"
 	"circuitcamel.com/internal/site/now"
+	"circuitcamel.com/internal/site/teapot"
 	"circuitcamel.com/internal/utils"
 	"github.com/gorilla/mux"
 )
 
 func StartServer(conf models.Config) {
-	server := mux.NewRouter()
+	go cache.LoadAll()
+
+	server := mux.NewRouter().StrictSlash(true)
 
 	server.HandleFunc("/", index.Index)
 	server.HandleFunc("/now", now.Now)
+	server.HandleFunc("/teapot", teapot.Teapot)
+	server.HandleFunc("/blog", blog.BlogList)
+	server.HandleFunc("/blog/{slug}/", blog.Blog)
 
 	server.HandleFunc("/content", slashEnd)
 	server.HandleFunc("/static", slashEnd)

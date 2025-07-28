@@ -10,3 +10,10 @@ type Config struct {
 type Page struct {
 	Body string
 }
+
+type BlogPost struct {
+	Slug  string
+	Title string
+	Body  string
+	Date  string
+}

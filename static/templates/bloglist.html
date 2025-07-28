@@ -1,0 +1,11 @@
+{{define "bloglist"}}
+{{template "head" .}}
+<body>
+	<div class="main-content">
+		{{range .}}
+            <a href="/blog/{{.Slug}}" class="bloglink">{{.Date}}: {{.Title}}</a>
+        {{end}}
+	</div>
+	{{template "footer" .}}
+</body>
+{{end}}

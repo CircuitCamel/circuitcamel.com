@@ -1,4 +1,4 @@
-{{define "base"}}
+{{define "head"}}
 <!-- 
    ____ _                _ _    ____                     _ 
   / ___(_)_ __ ___ _   _(_) |_ / ___|__ _ _ __ ___   ___| |
@@ -8,19 +8,11 @@
                                                             -->
 
 <!DOCTYPE html>
-<html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>{{block "title" .}}CircuitCamel{{end}}</title>
+	<title>{{block "Title" .}}CircuitCamel{{end}}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/static/styles/main.css">
 	<link rel="icon" type="image/x-icon" href="/static/images/tab_icons/camel-head.ico">
 </head>
-<body>
-	<div class="main-content">
-		{{.Body}}
-	</div>
-	{{template "footer" .}}
-</body>
-</html>
 {{end}}

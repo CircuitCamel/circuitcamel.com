@@ -3,8 +3,8 @@ package index
 import (
 	"net/http"
 	"os"
-	"text/template"
 
+	"circuitcamel.com/internal/cache"
 	"circuitcamel.com/internal/models"
 	"circuitcamel.com/internal/utils"
 )
@@ -19,10 +19,5 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 	index.Body = utils.MdToHTML(databytes)
 
-	tmpl, err := template.ParseFiles(
-		"static/templates/head.html",
-		"static/templates/footer.html",
-	)
-
-	tmpl.ExecuteTemplate(w, "base", index)
+	cache.PageTmpl.ExecuteTemplate(w, "page", index)
 }
