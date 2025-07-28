@@ -9,3 +9,6 @@ clean:
 
 full: build
 	./bin/site
+
+submodule:
+	git submodule update --recursive --remote --init
