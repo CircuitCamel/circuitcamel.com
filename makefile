@@ -7,8 +7,11 @@ build:
 clean:
 	rm bin/site && rm -d bin/
 
-full: build
+full: pull submodule build
 	./bin/site
+
+pull:
+	git pull
 
 submodule:
 	git submodule update --recursive --remote --init
