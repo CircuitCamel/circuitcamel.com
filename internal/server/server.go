@@ -24,16 +24,13 @@ func StartServer(conf models.Config) {
 	server.HandleFunc("/now", now.Now)
 	server.HandleFunc("/teapot", teapot.Teapot)
 	server.HandleFunc("/blog", blog.BlogList)
-	server.HandleFunc("/blog/{slug}/", blog.Blog)
+	server.HandleFunc("/blog/{slug}", blog.Blog)
 
-	server.HandleFunc("/content", slashEnd)
-	server.HandleFunc("/static", slashEnd)
-
-	server.PathPrefix("/static/").Handler(
-		http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))),
+	server.PathPrefix("/static").Handler(
+		http.StripPrefix("/static", http.FileServer(http.Dir("./static"))),
 	)
-	server.PathPrefix("/content/").Handler(
-		http.StripPrefix("/content/", http.FileServer(http.Dir("./content"))),
+	server.PathPrefix("/content").Handler(
+		http.StripPrefix("/content", http.FileServer(http.Dir("./content"))),
 	)
 	server.NotFoundHandler = http.HandlerFunc(notfound)
 
@@ -49,10 +46,4 @@ func StartServer(conf models.Config) {
 
 func notfound(w http.ResponseWriter, r *http.Request) {
 	utils.ErrPage(w, r, 404)
-}
-
-func slashEnd(w http.ResponseWriter, r *http.Request) {
-	path := r.URL.Path
-	fmt.Println(path)
-	http.Redirect(w, r, path+"/", http.StatusMovedPermanently)
 }
