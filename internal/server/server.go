@@ -24,6 +24,7 @@ func StartServer(conf models.Config) {
 	server.HandleFunc("/now", now.Now)
 	server.HandleFunc("/teapot", teapot.Teapot)
 	server.HandleFunc("/blog", blog.BlogList)
+	server.HandleFunc("/blog/latest", blog.Latest)
 	server.HandleFunc("/blog/{slug}", blog.Blog)
 
 	server.PathPrefix("/static").Handler(

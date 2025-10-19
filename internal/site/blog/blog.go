@@ -34,3 +34,7 @@ func Blog(w http.ResponseWriter, r *http.Request) {
 
 	cache.PageTmpl.ExecuteTemplate(w, "page", selected)
 }
+
+func Latest(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "/blog/"+cache.BlogPosts[0].Slug, http.StatusSeeOther)
+}
