@@ -22,7 +22,6 @@ body {
     flex-direction: column;
     gap: 1rem;
     flex: 1;
-    /* This makes the main content take up available space */
 }
 
 .my-foot {
@@ -30,7 +29,6 @@ body {
     padding: 1rem 0;
     font-size: 0.875rem;
     margin-top: auto;
-    /* This pushes the footer to the bottom */
 }
 
 @media (max-width: 768px) {
