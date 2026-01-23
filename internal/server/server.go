@@ -25,8 +25,8 @@ func StartServer(conf models.Config) {
 	server.HandleFunc("/teapot", teapot.Teapot)
 	server.HandleFunc("/blog", blog.BlogList)
 	server.HandleFunc("/blog/latest", blog.Latest)
-	server.HandleFunc("/blog/{slug}", blog.Blog)
 	server.HandleFunc("/blog/feed", blog.Feed)
+	server.HandleFunc("/blog/{slug}", blog.Blog)
 
 	server.PathPrefix("/static").Handler(
 		http.StripPrefix("/static", http.FileServer(http.Dir("./static"))),
