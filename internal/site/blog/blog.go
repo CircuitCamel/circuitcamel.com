@@ -10,7 +10,11 @@ import (
 )
 
 func BlogList(w http.ResponseWriter, r *http.Request) {
-	cache.BlogListTmpl.ExecuteTemplate(w, "bloglist", cache.BlogPosts)
+	page := models.BlogListPage{
+		Title: "Blog Posts",
+		Posts: cache.BlogPosts,
+	}
+	cache.BlogListTmpl.ExecuteTemplate(w, "bloglist", page)
 }
 
 func Blog(w http.ResponseWriter, r *http.Request) {

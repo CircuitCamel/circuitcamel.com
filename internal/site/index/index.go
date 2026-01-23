@@ -18,6 +18,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	}
 
 	index.Body = utils.MdToHTML(databytes)
+	index.Title = "CircuitCamel"
 
 	cache.PageTmpl.ExecuteTemplate(w, "page", index)
 }

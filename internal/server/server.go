@@ -26,6 +26,7 @@ func StartServer(conf models.Config) {
 	server.HandleFunc("/blog", blog.BlogList)
 	server.HandleFunc("/blog/latest", blog.Latest)
 	server.HandleFunc("/blog/{slug}", blog.Blog)
+	server.HandleFunc("/blog/feed", blog.Feed)
 
 	server.PathPrefix("/static").Handler(
 		http.StripPrefix("/static", http.FileServer(http.Dir("./static"))),
@@ -36,11 +37,12 @@ func StartServer(conf models.Config) {
 	server.NotFoundHandler = http.HandlerFunc(notfound)
 
 	fmt.Printf("Server running on port: %s", conf.PORT)
-	if conf.ENV == "production" {
+	switch conf.ENV {
+	case "production":
 		http.ListenAndServeTLS(":"+conf.PORT, conf.CRT, conf.KEY, server)
-	} else if conf.ENV == "staging" {
+	case "staging":
 		log.Fatal(http.ListenAndServeTLS(":"+conf.PORT, conf.CRT, conf.KEY, server))
-	} else {
+	default:
 		log.Fatal(http.ListenAndServe(":"+conf.PORT, server))
 	}
 }

@@ -8,7 +8,8 @@ type Config struct {
 }
 
 type Page struct {
-	Body string
+	Title string
+	Body  string
 }
 
 type BlogPost struct {
@@ -16,4 +17,9 @@ type BlogPost struct {
 	Title string
 	Body  string
 	Date  string
+}
+
+type BlogListPage struct {
+	Title string
+	Posts []BlogPost
 }
