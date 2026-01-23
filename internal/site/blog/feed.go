@@ -62,7 +62,7 @@ func Feed(w http.ResponseWriter, r *http.Request) {
 	rss := RSS{
 		Version: "2.0",
 		Channel: Channel{
-			Title:       "CircuitCamel Blog",
+			Title:       "CircuitCamel",
 			Link:        baseURL + "/blog",
 			Description: "Blog posts from CircuitCamel",
 			Language:    "en-us",
